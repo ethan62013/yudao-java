@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.yudao.module.equipment.dal.mysql.device.EquipmentMapper">
+
+    <select id="selectEquipmentPage"
+            resultType="cn.iocoder.yudao.module.equipment.dal.dataobject.device.EquipmentDO">
+        SELECT id, name, code, status, remark, creator, create_time, updater, update_time, deleted, tenant_id
+        FROM equipment_device
+        WHERE deleted = 0
+        <if test="reqVO.name != null and reqVO.name != ''">
+            AND name LIKE CONCAT('%', #{reqVO.name}, '%')
+        </if>
+        <if test="reqVO.status != null">
+            AND status = #{reqVO.status}
+        </if>
+        <if test="reqVO.createTime != null and reqVO.createTime.length == 2">
+            AND create_time BETWEEN #{reqVO.createTime[0],javaType=java.time.LocalDateTime}
+                                AND #{reqVO.createTime[1],javaType=java.time.LocalDateTime}
+        </if>
+        ORDER BY id DESC
+    </select>
+
+</mapper>

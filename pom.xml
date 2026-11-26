@@ -16,8 +16,9 @@
         <module>yudao-module-system</module>
         <module>yudao-module-infra</module>
 <!--        <module>yudao-module-member</module>-->
-<!--        <module>yudao-module-bpm</module>-->
-<!--        <module>yudao-module-report</module>-->
+        <module>yudao-module-bpm</module>
+        <module>yudao-module-equipment</module>
+        <!--        <module>yudao-module-report</module>-->
 <!--        <module>yudao-module-mp</module>-->
 <!--        <module>yudao-module-pay</module>-->
 <!--        <module>yudao-module-mall</module>-->
@@ -148,17 +149,20 @@
         </plugins>
     </build>
 
-    <!-- 使用 huawei / aliyun 的 Maven 源，提升下载速度 -->
+    <!--
+      仓库 ID 保持不变，避免本地已有依赖被判定为来源不匹配。
+      本机解析不了 mirrors.huaweicloud.com 和 maven.aliyun.com，地址改到 Maven Central。
+    -->
     <repositories>
         <repository>
             <id>huaweicloud</id>
             <name>huawei</name>
-            <url>https://mirrors.huaweicloud.com/repository/maven/</url>
+            <url>https://repo.maven.apache.org/maven2</url>
         </repository>
         <repository>
             <id>aliyunmaven</id>
             <name>aliyun</name>
-            <url>https://maven.aliyun.com/repository/public</url>
+            <url>https://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
 

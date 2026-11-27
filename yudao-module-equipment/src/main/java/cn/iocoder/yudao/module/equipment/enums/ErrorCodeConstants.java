@@ -11,5 +11,6 @@ public interface ErrorCodeConstants {
 
     // ========== 设备 1-061-001-000 ==========
     ErrorCode EQUIPMENT_NOT_EXISTS = new ErrorCode(1_061_001_000, "设备不存在");
+    ErrorCode EQUIPMENT_USER_EXISTS = new ErrorCode(1_061_001_001, "该用户已是此设备人员");
 
 }
